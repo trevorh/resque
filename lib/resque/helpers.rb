@@ -29,7 +29,7 @@ module Resque
       begin
         ::MultiJson.decode(object)
       rescue ::MultiJson::DecodeError => e
-        raise DecodeException, e.message, e.backtrace
+        raise DecodeException, "#{e.message} --> #{object.class}:#{object.inspect}", e.backtrace
       end
     end
 
